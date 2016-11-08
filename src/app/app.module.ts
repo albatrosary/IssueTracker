@@ -14,6 +14,7 @@ import { IssueListComponent } from './issue/issue-list/issue-list.component';
 import { IssueDetailComponent } from './issue/issue-detail/issue-detail.component';
 
 import { IssueStoreService } from './issue/issue-store.service';
+import { MarkdownPipe } from './markdown.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { IssueStoreService } from './issue/issue-store.service';
     PageNotFoundComponent,
     IssueInputComponent,
     IssueListComponent,
-    IssueDetailComponent
+    IssueDetailComponent,
+    MarkdownPipe
   ],
   imports: [
     BrowserModule,
