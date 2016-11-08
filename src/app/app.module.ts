@@ -9,13 +9,21 @@ import { IssueComponent } from './issue/issue.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { routing, appRoutingProviders }  from './app.routes';
+import { IssueInputComponent } from './issue/issue-input/issue-input.component';
+import { IssueListComponent } from './issue/issue-list/issue-list.component';
+import { IssueDetailComponent } from './issue/issue-detail/issue-detail.component';
+
+import { IssueStoreService } from './issue/issue-store.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     IssueComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    IssueInputComponent,
+    IssueListComponent,
+    IssueDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +31,10 @@ import { routing, appRoutingProviders }  from './app.routes';
     HttpModule,
     routing
   ],
-  providers: [appRoutingProviders],
+  providers: [
+    appRoutingProviders,
+    IssueStoreService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
