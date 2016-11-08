@@ -13,9 +13,6 @@ export class IssueDetailComponent implements OnInit {
   @Input('title')
   private title: string;
 
-  @Input('desc')
-  private desc: string;
-
   @Output('on-delete')
   private onDelete = new EventEmitter();
   public onClick($event: any): void {

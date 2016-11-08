@@ -1,15 +1,17 @@
 .row {
   text-align: center;
-  font-size: 2rem;
   margin: 5px 5px 5px 5px;
-  width: 100px;
-  height: 100px;
+  width: 50px;
   background-color: #4e5d5f;
   color: #ffffff;
 }
 div {
   float: left;
 }
+span {
+  margin: 5px 5px 5px 5px;
+}
 button {
+  margin: 4px 0 4px 0;
   background-color: #ffffff;
 }

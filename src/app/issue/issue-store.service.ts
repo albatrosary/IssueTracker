@@ -9,7 +9,6 @@ export class IssueStoreService {
   
   constructor() { }
 
-  
   public delete(index: number): void {
     this.issues.splice(index, 1);
   }
@@ -24,5 +23,9 @@ export class IssueStoreService {
 
   public get list(): Issue[] {
     return this.issues;
+  }
+
+  public get count(): number {
+    return this.issues.length;
   }
 }
