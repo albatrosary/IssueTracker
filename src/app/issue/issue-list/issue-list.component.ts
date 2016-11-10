@@ -9,25 +9,21 @@ import { IssueStoreService } from '../issue-store.service';
   styleUrls: ['./issue-list.component.css']
 })
 export class IssueListComponent implements OnInit {
-
   private issues: Issue[];
 
   constructor(
     private issueStoreService: IssueStoreService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-    this.issues = this.issueStoreService.list;
+    this.issueStoreService.allList()
+      .then(response => this.issues = response)
+      .catch(error => console.log(error));
   }
   
   public onDelete(index: number): void {
-    this.issueStoreService.delete(index);
-  }
-
-  @Output('on-update')
-  private OnUpdate
-
-  public onUpdate(index: number): void {
-    
+    this.issueStoreService.delete(index)
+      .catch(error => console.log(error))
   }
 }

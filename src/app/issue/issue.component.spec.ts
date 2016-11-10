@@ -1,9 +1,21 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, Component } from '@angular/core';
 
 import { IssueComponent } from './issue.component';
+
+@Component({
+  selector: 'app-issue-input',
+  template: './issue.component.html'
+})
+class AppIssueInputWrapper { }
+
+@Component({
+  selector: 'app-issue-list',
+  template: './issue-list.component.html'
+})
+class AppIssueListWrapper { }
 
 describe('IssueComponent', () => {
   let component: IssueComponent;
@@ -11,7 +23,11 @@ describe('IssueComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IssueComponent ]
+      declarations: [
+        IssueComponent,
+        AppIssueInputWrapper,
+        AppIssueListWrapper
+      ]
     })
     .compileComponents();
   }));

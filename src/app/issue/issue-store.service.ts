@@ -1,31 +1,49 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/toPromise';
 
 import { Issue } from './issue';
 
 @Injectable()
 export class IssueStoreService {
 
+  private headers = new Headers({'Content-Type': 'application/json'});
+
+  private url = '/api/issues';
+
   private issues: Issue[] = [];
   
-  constructor() { }
+  constructor(private http: Http) { }
 
-  public delete(index: number): void {
-    this.issues.splice(index, 1);
+  public delete(index: number): Promise<Issue[]> {
+    return this.http.delete(this.url+`/${index}`, {headers: this.headers})
+      .toPromise()
+      .then(() => this.issues.splice(index, 1))
+      .catch(this.handleError);
   }
   
   public add(issue: Issue): void {
-    this.issues.push(issue);
-  }
-  
-  public update(index: number, issue: Issue): void {
-    this.issues[index] = issue;
-  }
-
-  public get list(): Issue[] {
-    return this.issues;
+    this.http.post(this.url, JSON.stringify(issue), {headers: this.headers})
+      .toPromise()
+      .then(()=>this.issues.push(issue))
+      .catch(this.handleError);
   }
 
-  public get count(): number {
-    return this.issues.length;
+  public allList(): Promise<Issue[]> {
+    return this.http.get(this.url)
+      .toPromise()
+      .then(response => {
+        this.issues = response.json()
+        return this.issues
+      })
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any) {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
   }
 }
+
