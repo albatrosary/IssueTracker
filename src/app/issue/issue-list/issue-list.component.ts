@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 import { Issue } from '../issue';
 import { IssueStoreService } from '../issue-store.service';
@@ -22,5 +22,12 @@ export class IssueListComponent implements OnInit {
   
   public onDelete(index: number): void {
     this.issueStoreService.delete(index);
+  }
+
+  @Output('on-update')
+  private OnUpdate
+
+  public onUpdate(index: number): void {
+    
   }
 }

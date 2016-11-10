@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Issue } from '../issue';
@@ -9,9 +9,18 @@ import { IssueStoreService } from '../issue-store.service';
   templateUrl: './issue-input.component.html',
   styleUrls: ['./issue-input.component.css']
 })
-export class IssueInputComponent implements OnInit {
+export class IssueInputComponent implements OnInit, OnChanges {
 
   private issue: Issue;
+
+  @Input('rownum')
+  private rownum: number;
+
+  @Input('title')
+  private title: string;
+  
+  @Input('desc')
+  private desc: string;
 
   constructor(
     private issueStoreService: IssueStoreService
@@ -20,6 +29,10 @@ export class IssueInputComponent implements OnInit {
 
   ngOnInit() {
     this.issue = new Issue;
+  }
+
+  ngOnChanges() {
+    console.log('ほげ');
   }
 
   public onSubmit(form: NgForm): void {
@@ -31,5 +44,9 @@ export class IssueInputComponent implements OnInit {
     this.issue = new Issue;
 
     form.reset();
+  }
+
+  public onChange(form: NgForm): void {
+
   }
 }

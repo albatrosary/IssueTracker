@@ -12,6 +12,7 @@ export class MarkdownPipe implements PipeTransform {
 
   transform(value: any, args?: any): SafeHtml {
     if ( value === undefined || value === null ) return '';
+    localStorage.setItem('amke', value);
     return this.sanitizer.bypassSecurityTrustHtml(marked(value));
   }
 }

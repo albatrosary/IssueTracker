@@ -15,6 +15,7 @@ import { IssueDetailComponent } from './issue/issue-detail/issue-detail.componen
 
 import { IssueStoreService } from './issue/issue-store.service';
 import { MarkdownPipe } from './markdown.pipe';
+import { WikiComponent } from './wiki/wiki.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MarkdownPipe } from './markdown.pipe';
     IssueInputComponent,
     IssueListComponent,
     IssueDetailComponent,
-    MarkdownPipe
+    MarkdownPipe,
+    WikiComponent
   ],
   imports: [
     BrowserModule,
