@@ -27,6 +27,12 @@ describe('App: IssueTracker', () => {
     expect(app).toBeTruthy();
   }));
 
+  it(`should have as title 'Issue Tracker'`, async(() => {
+    let fixture = TestBed.createComponent(AppComponent);
+    let app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('Issue Tracker');
+  }));
+
   it('should render title in a h1 tag', async(() => {
     let fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
