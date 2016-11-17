@@ -2,8 +2,13 @@ import { Component , OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+<h1>Issue Tracker</h1>
+<ul>
+  <li><a routerLink="home" routerLinkActive="active">Home</a></li>
+</ul>
+<router-outlet></router-outlet>
+  `
 })
 export class AppComponent implements OnInit {
 
@@ -14,3 +19,4 @@ export class AppComponent implements OnInit {
   ngOnInit () {
   }
 }
+

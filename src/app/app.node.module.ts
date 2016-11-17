@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { UniversalModule, createGlobalProxy } from 'angular2-universal/node';
+
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -16,7 +17,7 @@ import { routing, appRoutingProviders }  from './app.routes';
     PageNotFoundComponent
   ],
   imports: [
-    BrowserModule,
+    UniversalModule,
     FormsModule,
     HttpModule,
     routing
@@ -26,4 +27,8 @@ import { routing, appRoutingProviders }  from './app.routes';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    createGlobalProxy();
+  }
+}
